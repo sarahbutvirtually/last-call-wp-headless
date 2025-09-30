@@ -5,7 +5,6 @@ import styles from "./NavBarSection.module.scss";
 import Image from "next/image";
 
 export default function NavBarClient({ navBar }) {
-  console.log(navBar);
 
   if (!navBar) return null;
 
