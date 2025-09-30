@@ -35,9 +35,9 @@ export default async function Home() {
           and the URI is &quot;/&quot;.
         </p>
       ) : (
-        <>
+        <main>
           <FeaturedSection uri="/" />
-        </>
+        </main>
       )}
     </main>
   );

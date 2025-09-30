@@ -1,0 +1,93 @@
+@use "../../../app/styles/breakpoints" as *;
+
+.nav,
+.nav * {
+  box-sizing: border-box;
+}
+.nav {
+  background: #300a09;
+  padding: 0rem var(--page-padding-padding-global, 4rem) 0rem
+    var(--page-padding-padding-global, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 4.5rem;
+}
+.nav__container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+.nav__logo {
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1;
+}
+.nav__last-call > img {
+  height: 48px;
+  max-height: 3rem;
+  width: auto;
+  max-width: 100%;
+
+}
+.nav__button-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav__button {
+  background: #f5f5eb;
+  border: 1px solid #300a09;
+  padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background: #e0e0d1;
+  }
+}
+
+.nav__button--label {
+  color: #300a09;
+  text-align: left;
+  font-family: "sofia-pro-soft";
+  font-size: 0.8rem;;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Tablet */
+@include tablet {
+  .nav__container { gap: 1.25rem; }
+  .nav__last-call { font-size: 1.6875rem; }
+  .nav__button--label { font-size: 0.8rem; }
+}
+
+/* Mobile */
+@include mobile {
+  .nav { height: auto; padding: 0.5rem 1rem; }
+  .nav__container { gap: 1rem; }
+  .nav__last-call { font-size: 1.5rem; }
+  .nav__button { padding: 0.4rem 0.9rem; }
+  .nav__button--label { font-size: 0.75rem; }
+}
+
+/* Small phones */
+@include small {
+  .nav__last-call { font-size: 1.375rem; }
+  .nav__button--label { font-size: 0.7rem; }
+}
