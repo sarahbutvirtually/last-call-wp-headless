@@ -1,6 +1,7 @@
 import styles from "./page.module.scss";
 import { wpGraphQL, gql } from "@/lib/wp-graphql";
 import FeaturedSection from "@/components/sections/FeaturedSection/FeaturedSection";
+import CarouselGallerySection from "@/components/sections/CarouselGallerySection/CarouselGallerySection";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,7 @@ export default async function Home() {
       ) : (
         <main>
           <FeaturedSection uri="/" />
+          <CarouselGallerySection uri="/" />
         </main>
       )}
     </main>
