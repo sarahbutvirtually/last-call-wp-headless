@@ -23,8 +23,8 @@ export default function NavBarClient({ navBar }) {
           </div>
         </div>
         <div className={styles["nav__button-container"]}>
-          {/* TODO: Refactor the link */}
-          <Link href={navBar.pageLink} className={styles["nav__button"]}>
+          {/* Link accepts ID of section to go to on the current page */}
+          <Link href={navBar.link} className={styles["nav__button"]} target={navBar.openInNewTab == true ? "_blank" : "_self"}>
             <span className={styles["nav__button--label"]}>{navBar.buttonLabel}</span>
           </Link>
         </div>

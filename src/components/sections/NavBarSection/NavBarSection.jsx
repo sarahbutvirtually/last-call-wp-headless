@@ -14,23 +14,7 @@ export default async function NavBarSection({ uri = "/" }) {
         pageBy(uri: $uri) {
           navbarSection {
             logo { node { ...Media } }
-            pageLink {
-              nodes {
-                __typename
-                ... on Page {
-                  id
-                  databaseId
-                  title
-                  uri
-                }
-                ... on Post {
-                  id
-                  databaseId
-                  title
-                  uri
-                }
-              }
-            }
+            buttonLink
             buttonLabel
             openInNewTab
           }
@@ -46,7 +30,7 @@ export default async function NavBarSection({ uri = "/" }) {
 
   const navBar = {
     logo: section.logo,
-    pageLink: section.pageLink?.nodes ?? [],
+    link: section.buttonLink,
     buttonLabel: section.buttonLabel,
     openInNewTab: section.openInNewTab,
   };
