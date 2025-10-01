@@ -1,0 +1,222 @@
+@use "../../../app/styles/breakpoints" as *;
+
+.howItWorks {
+  --tab-narrow: 76px;
+  --button-col: 76px;
+  overflow: hidden;
+
+  .hidden {
+    display: none !important;
+  }
+
+  .visible {
+    visibility: visible;
+  }
+
+  display: flex;
+  background: #c14c7d;
+  padding: 7rem 4rem;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    max-width: var(--container-container-large, 80rem);
+  }
+
+  &__sectionTitles--top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__headingLeft, &__headingRight {
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+    flex-direction: row-reverse;
+    gap: 0;
+
+    &--tab {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    &--tab1, &--tab2, &--tab3, &--tab4 {
+      display: flex;
+    }
+
+    &--tabActive,
+    .howItWorks__active--tab {
+      flex: 1 1 auto;
+      min-width: 0;
+      border-right: 1px solid #c14c7d !important;
+    }
+
+    & > .howItWorks__active--tab:last-child,
+    & > &--tabActive:last-child {
+      border-left: 1px solid #c14c7d !important;
+    }
+
+    &--tabInactive,
+    .howItWorks__inactive--tab {
+      /* Inactive tabs stay a fixed column width */
+      flex: 0 0 var(--tab-narrow);
+    }
+
+  &--button {
+      background: #fff2ea;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      height: 100%;
+      border: unset;
+      position: relative;
+      border-right: 0;
+      flex: 0 0 var(--button-col);
+      min-width: var(--button-col);
+
+      &:hover {
+        cursor: pointer;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background: #c14c7d;
+        pointer-events: none;
+      }
+    }
+
+  /* When the tab is inactive (narrow), let the button be the full tab width */
+  .howItWorks__inactive--button { flex: 1 1 auto; min-width: 0; }
+  .howItWorks__active--button { flex: 0 0 var(--button-col); }
+
+    &--number, &--header {
+      color: #300a09;
+      transform: rotate(90deg);
+      width: fit-content;
+    }
+
+    &--copy {
+      background:#fff;
+      padding: 0 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      justify-content: center;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .howItWorks__active--copy {
+      opacity: 1;
+      transition: opacity 250ms ease;
+    }
+
+    .howItWorks__inactive--copy {
+    display: none;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: opacity 350ms ease;
+    pointer-events: none;
+    }
+
+    &--sectionHeading, &--sectionBody {
+      color: #300a09;
+      letter-spacing: 0.01em;
+    }
+
+    &--sectionBody {
+      font-size: 18px;
+    }
+  }
+}
+
+// 1024px and below
+@include tablet {
+  .howItWorks {
+    padding: 4rem 1rem !important;
+
+    &__content {
+      flex-direction: column-reverse;
+      justify-content: flex-start;
+      align-items: stretch;
+      height: auto;
+      gap: 0;
+
+      &--tab {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+      }
+
+      .howItWorks__active--tab,
+      .howItWorks__inactive--tab {
+        width: 100% !important;
+        border-right: 0 !important;
+        border-bottom: 1px solid #c14c7d !important;
+      }
+
+      &--button {
+        width: 100% !important;
+        border-right: 0 !important;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: auto;
+        padding: 0.5rem 0.75rem;
+        &::after { display: none; }
+      }
+
+      &--number, &--header { transform: none; }
+
+      &--copy {
+        width: 100%;
+        padding: 2rem;
+        overflow: hidden;
+      }
+
+      .howItWorks__active--copy {
+        opacity: 1;
+        width: 100%;
+        max-height: 600px;
+        transition: max-height 300ms ease, opacity 250ms ease;
+      }
+      .howItWorks__inactive--copy {
+        display: none; /* fully hide when not active */
+        opacity: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 300ms ease, opacity 350ms ease;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+/* Mobile */
+@include mobile { .howItWorks { padding: 4rem 1rem; } }
+
+/* Small phones */
+@include small { .howItWorks { padding: 3rem 0.75rem; } }
+
