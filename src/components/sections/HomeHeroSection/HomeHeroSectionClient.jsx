@@ -54,8 +54,8 @@ export default function HomeHeroSectionClient({ section, images = [] }) {
             >
               <Image
                 priority={index === 0}
-                width={1920}
-                height={1080}
+                width={3840}
+                height={2160}
                 className={styles.bookTheBar__image}
                 src={img?.sourceUrl || ""}
                 alt={img?.altText || ""}
