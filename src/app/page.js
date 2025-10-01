@@ -3,6 +3,7 @@ import { wpGraphQL, gql } from "@/lib/wp-graphql";
 
 import HomeHeroSection from "@/components/sections/HomeHeroSection/HomeHeroSection";
 import FeaturedSection from "@/components/sections/FeaturedSection/FeaturedSection";
+import PricingSection from "@/components/sections/PricingSection/PricingSection";
 import CarouselGallerySection from "@/components/sections/CarouselGallerySection/CarouselGallerySection";
 
 export const dynamic = "force-dynamic";
@@ -41,6 +42,7 @@ export default async function Home() {
         <main>
           <HomeHeroSection uri="/" />
           <FeaturedSection uri="/" />
+          <PricingSection uri="/" />
           <CarouselGallerySection uri="/" />
         </main>
       )}
