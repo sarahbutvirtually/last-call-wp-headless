@@ -1,6 +1,7 @@
 import "./globals.scss";
 
 import NavBarSection from "@/components/sections/NavBarSection/NavBarSection";
+import Footer from "@/components/sections/FooterSection/FooterSection";
 
 export const metadata = {
   title: "Last Call – WP Headless",
@@ -16,7 +17,7 @@ export default function RootLayout({ children }) {
         </header>
         {children}
         <footer>
-          <p>Footer</p>
+          <Footer />
         </footer>
       </body>
     </html>

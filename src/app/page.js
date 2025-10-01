@@ -7,6 +7,7 @@ import PricingSection from "@/components/sections/PricingSection/PricingSection"
 import CarouselGallerySection from "@/components/sections/CarouselGallerySection/CarouselGallerySection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection/HowItWorksSection";
 import FAQSection from "@/components/sections/FAQSection/FAQSection";
+import ContactFormSection from "@/components/sections/ContactFormSection/ContactFormSection";
 
 export const dynamic = "force-dynamic";
 
@@ -48,6 +49,7 @@ export default async function Home() {
           <CarouselGallerySection uri="/" />
           <HowItWorksSection />
           <FAQSection />
+          <ContactFormSection />
         </main>
       )}
     </main>

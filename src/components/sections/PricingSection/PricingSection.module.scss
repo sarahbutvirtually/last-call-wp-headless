@@ -132,6 +132,17 @@
       align-items: flex-end;
       justify-content: center;
       width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+      &:hover {
+        background: #b04472;
+      }
+
+      &:focus-visible {
+        outline: 2px solid #300a09;
+        outline-offset: 2px;
+      }
     }
 
     &--buttonLabel {

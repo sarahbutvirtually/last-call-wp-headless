@@ -1,0 +1,96 @@
+@use "../../../app/styles/breakpoints" as *;
+
+.footer {
+  background: #fff2ea;
+  padding: 7rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include tablet { .footer { &__lastCall { font-size: 2rem; } &__nav { &--item { font-size: 0.95rem; } } } }
+  @include mobile { .footer { &__lastCall { font-size: 1.75rem; } &__nav { &--item { font-size: 0.9rem; } } } }
+  @include small  { .footer { &__lastCall { font-size: 1.5rem; } &__nav { &--item { font-size: 0.85rem; } } } }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &--item {
+      color: #300a09;
+      font-size: 1rem;
+    }
+  }
+
+  &__credits {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  &__divider {
+    margin-top: -0.0625rem;
+    border: 0.8px solid #300a09;
+    height: 0rem;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__copyright {
+    color: #300a09;
+    font-size: 0.6rem;
+  }
+
+  &__footerLinks {
+    display: flex;
+    gap: 1.5rem;
+
+    &--link {
+      color: #300a09;
+      font-size: 0.6rem;
+      text-decoration: underline;
+      text-underline-offset: 0.125rem;
+    }
+  }
+}
+
+/* Tablet */
+@include tablet { .footer { &__nav { gap: 1.25rem; } } }
+
+/* Mobile */
+@include mobile { .footer { padding: 3rem 1rem; &__nav { gap: 1rem; } &__row { flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; } } }
+
+/* Small phones */
+@include small { .footer { padding: 2.5rem 0.75rem; } }
