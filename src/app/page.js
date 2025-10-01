@@ -5,6 +5,7 @@ import HomeHeroSection from "@/components/sections/HomeHeroSection/HomeHeroSecti
 import FeaturedSection from "@/components/sections/FeaturedSection/FeaturedSection";
 import PricingSection from "@/components/sections/PricingSection/PricingSection";
 import CarouselGallerySection from "@/components/sections/CarouselGallerySection/CarouselGallerySection";
+import FAQSection from "@/components/sections/FAQSection/FAQSection";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +45,7 @@ export default async function Home() {
           <FeaturedSection uri="/" />
           <PricingSection uri="/" />
           <CarouselGallerySection uri="/" />
+          <FAQSection uri="/" />
         </main>
       )}
     </main>
