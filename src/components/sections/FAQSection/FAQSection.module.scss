@@ -1,1 +1,116 @@
 @use "../../../app/styles/breakpoints" as *;
+
+.faq {
+  background: #fff2ea;
+  padding: 7rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  &__section-title {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__heading {
+    color: #300a09;
+    text-align: center;
+  }
+
+  @include tablet { .faq { &__heading { font-size: 2rem; } } }
+  @include mobile { .faq { &__heading { font-size: 1.75rem; } } }
+  @include small  { .faq { &__heading { font-size: 1.5rem; } } }
+
+  &__accordionList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  &__accordion--item {
+    border: 1px solid #300a09;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__questionContainer {
+  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  -webkit-appearance: none;
+    cursor: pointer;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    transition: transform 180ms ease;
+  }
+  &__icon.open {
+    transform: rotate(45deg);
+  }
+
+  /* Animated accordion: wrapper controls the height, inner has padding */
+  &__answerWrap {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 350ms ease, opacity 250ms ease;
+  }
+  &__answerWrap.open {
+    max-height: 400px; /* sufficient for our short answers */
+    opacity: 1;
+  }
+  &__answer {
+    padding: 0rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  &__text {
+    color: #300a09;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Tablet */
+@include tablet { .faq { &__section-title { gap: 1rem; } } }
+
+/* Mobile */
+@include mobile { .faq { padding: 4rem 1rem; gap: 3rem; &__section-title { flex-direction: column; } } }
+
+/* Small phones */
+@include small { .faq { padding: 3rem 0.75rem; } }

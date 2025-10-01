@@ -2,18 +2,26 @@ import { wpGraphQL, gql } from "@/lib/wp-graphql";
 import FAQSectionClient from "./FAQSectionClient";
 
 export default async function FAQSection() {
-  const faqQuery = await wpGraphQL(
+  const faqData = await wpGraphQL(
   gql`
-    # query AllFAQItems {
-    #   faqs(first: 50) {
-    #     nodes {
-    #       question
-    #       answer
-    #     }
-    #   }
-    # }
+    query AllFAQItems {
+      faqs {
+        nodes{
+          faqFields {
+            question
+            answer
+            backgroundColor
+            textColor
+          }
+        }
+      }
+    }
   `
   );
 
-  return <FAQSectionClient />;
+  const faqs = faqData?.faqs?.nodes?.map((n) => n?.faqFields).filter(Boolean) || [];
+
+  if (faqs.length === 0) return null;
+
+  return <FAQSectionClient faqs={faqs} />;
 }
