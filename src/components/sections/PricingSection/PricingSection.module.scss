@@ -7,10 +7,7 @@
 
 .pricing {
   background: #c9b23c;
-  padding: var(--section-padding-padding-section-large, 7rem)
-    var(--page-padding-padding-global, 4rem)
-    var(--section-padding-padding-section-large, 7rem)
-    var(--page-padding-padding-global, 4rem);
+  padding: 7rem 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +20,7 @@
     justify-content: center;
     gap: 2.5rem;
     width: 100%;
-    max-width: var(--container-container-large, 80rem);
+    max-width: 1200px;
   }
 
   &__headerContainer {
@@ -37,74 +34,10 @@
     text-align: center;
   }
 
-  &__tabs {
-    background: var(--color-scheme-1-foreground, #ffffff);
-    border: 1px solid #300a09;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &--button {
-      background: transparent; /* reset native button visuals */
-      border: 0;
-      padding: 0;
-      appearance: none;
-      -webkit-appearance: none;
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-  }
-
-  &__monthly {
-    color: #300a09;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    border: 1px solid #300a09;
-    margin-left: 4px;
-  }
-
-  &__yearly {
-    opacity: 0.6;
-    padding: 0.75rem 1.5rem 0.75rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Preserve original tab label look and only toggle emphasis */
-  &__tabLabelSelected {
-    background: #fff2ea;
-    opacity: 1;
-  }
-  &__tabLabelMuted {
-    opacity: 0.6;
-  }
-
   &__cardContainer {
     display: flex;
     justify-content: center;
     gap: 2rem;
-  }
-
-  /* Stack two card sets in a shared viewport and crossfade */
-  &__cardsViewport {
-    position: relative;
-  }
-
-  &__cardsLayer {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 350ms ease;
-  }
-
-  &__cardsLayer.active {
-    opacity: 1;
-    pointer-events: auto;
   }
 
   &__card {
@@ -207,6 +140,7 @@
       letter-spacing: 0.02em;
       text-transform: uppercase;
       font-size: 14px;
+      white-space: nowrap;
     }
   }
 
@@ -218,7 +152,6 @@
     display: flex;
     justify-content: center;
   }
-  /* Typography base remains desktop; responsive sizing below */
 }
 
 /* Tablet */
