@@ -1,5 +1,7 @@
 import styles from "./page.module.scss";
 import { wpGraphQL, gql } from "@/lib/wp-graphql";
+
+import HomeHeroSection from "@/components/sections/HomeHeroSection/HomeHeroSection";
 import FeaturedSection from "@/components/sections/FeaturedSection/FeaturedSection";
 import CarouselGallerySection from "@/components/sections/CarouselGallerySection/CarouselGallerySection";
 
@@ -37,6 +39,7 @@ export default async function Home() {
         </p>
       ) : (
         <main>
+          <HomeHeroSection uri="/" />
           <FeaturedSection uri="/" />
           <CarouselGallerySection uri="/" />
         </main>

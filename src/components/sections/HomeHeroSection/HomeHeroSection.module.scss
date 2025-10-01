@@ -1,0 +1,135 @@
+@use "../../../app/styles/breakpoints" as *;
+
+
+.bookTheBar {
+  background: #e1b192;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__imageContainer {
+    height: 75vh;
+    width: 100%;
+    border-bottom: 1px solid #300a09;
+    position: relative;
+
+    figure {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    padding: 3.75rem var(--page-padding-padding-global, 4rem) 6.25rem
+      var(--page-padding-padding-global, 4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+    width: 100%;
+  }
+  
+  &__subhead {
+    text-align: center;
+  }
+
+  &__heading {
+    text-align: center;
+  }
+@include tablet { .bookTheBar { &__heading { font-size: 2rem; } &__subhead { font-size: 1rem; } &__body { font-size: 1rem; } } }
+@include mobile { .bookTheBar { &__heading { font-size: 1.75rem; } &__subhead { font-size: 0.95rem; } &__body { font-size: 0.95rem; } } }
+@include small  { .bookTheBar { &__heading { font-size: 1.5rem; } &__subhead { font-size: 0.9rem; } &__body { font-size: 0.9rem; } } }
+
+  &__body {
+    text-align: center;
+    line-height: 180%;
+    font-weight: 500;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  &__button--primary {
+    background: #c14c7d;
+    border: 1px solid #c14c7d;
+    padding: 1rem 2rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    &:link,
+    &:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+  }
+
+  &__label--primary {
+    color: #f5f5eb;
+    text-align: center;
+    font-family: "sofia-pro-soft";
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+
+  &__button--secondary {
+    background: #dc2f22;
+    border: 1px solid #dc2f22;
+    padding: 1rem 2rem 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    &:link,
+    &:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+  }
+
+  &__label--secondary {
+    color: #f5f5eb;
+    text-align: center;
+    font-family: "sofia-pro-soft";
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+}
+
+/* Tablet */
+@include tablet { .bookTheBar { &__imageContainer { height: 55vh; } } }
+
+/* Mobile */
+@include mobile { .bookTheBar { &__imageContainer { height: 40vh; } &__content { padding: 2rem 1rem 3rem; } &__actions { flex-direction: column; width: 100%; } &__button--primary, &__button--secondary { width: 100%; } } }
+
+/* Small phones */
+@include small { .bookTheBar { &__imageContainer { height: 32vh; } } }
