@@ -36,6 +36,7 @@
 
   &__cardContainer {
     display: flex;
+    flex-direction: row-reverse;
     justify-content: center;
     gap: 2rem;
   }
