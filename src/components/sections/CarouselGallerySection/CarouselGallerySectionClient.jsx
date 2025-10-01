@@ -5,58 +5,87 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function CarouselGallerySectionClient({ imgArray }) {
-  console.log(imgArray);
-
   if (!imgArray || !imgArray.length) return null;
 
   // TODO: Refactor ALL of this
+  
+  // refs & state
   const trackRef = useRef(null);
-  const [index, setIndex] = useState(0);
-  const [cardW, setCardW] = useState(0);
-  const [gap, setGap] = useState(0);
-  const [cardsPerView, setCardsPerView] = useState(1);
-  const [containerW, setContainerW] = useState(0);
 
+  const [index, setIndex] = useState(0);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [gapWidth, setGapWidth] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(1);
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  // small helpers
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
+  const safeParseGap = (s) => parseFloat(s || "0");
+
+  // measure DOM to derive sizes & cards per view
   const measure = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
+
     const firstCard = track.querySelector(`.${styles["gallery__content--item"]}`);
-    const cardWidth = firstCard?.getBoundingClientRect().width ?? 0;
-    const cs = getComputedStyle(track);
-    const gapPx = parseFloat(cs.columnGap || cs.gap || "0");
-    const containerWidth = track.parentElement?.getBoundingClientRect().width ?? 0;
-    const per = cardWidth > 0 ? Math.max(1, Math.floor((containerWidth + gapPx) / (cardWidth + gapPx))) : 1;
-    setCardW(cardWidth);
-    setGap(gapPx);
+    const cardW = firstCard ? firstCard.getBoundingClientRect().width : 0;
+    const computed = getComputedStyle(track);
+    // browsers expose gap via columnGap or gap depending on layout
+    const gap = safeParseGap(computed.columnGap || computed.gap);
+    const containerW = track.parentElement?.getBoundingClientRect().width ?? 0;
+
+    // how many full cards fit in the viewport (at least 1)
+    const per = cardW > 0 ? Math.max(1, Math.floor((containerW + gap) / (cardW + gap))) : 1;
+
+    setCardWidth(cardW);
+    setGapWidth(gap);
     setCardsPerView(per);
-    setContainerW(containerWidth);
-    // Clamp index if it fell out of range after resize
-    const maxIdx = Math.max(0, imgArray.length - per);
-    setIndex((i) => Math.min(i, maxIdx));
+    setContainerWidth(containerW);
+
+    // if index is outside new range, clamp it
+    setIndex((cur) => {
+      const maxIdx = Math.max(0, imgArray.length - per);
+      return clamp(cur, 0, maxIdx);
+    });
   }, [imgArray.length]);
 
+  // attach resize observer + window resize fallback
   useEffect(() => {
     measure();
-    const onResize = () => {
-      requestAnimationFrame(measure);
+
+    const ro = new ResizeObserver(() => requestAnimationFrame(measure));
+    if (trackRef.current) {
+      // observe both track and its parent (viewport) for layout changes
+      ro.observe(trackRef.current);
+      if (trackRef.current.parentElement) ro.observe(trackRef.current.parentElement);
+    }
+
+    const onWindowResize = () => requestAnimationFrame(measure);
+    window.addEventListener("resize", onWindowResize);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", onWindowResize);
     };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
   }, [measure]);
 
+  // navigation helpers
   const maxIndex = Math.max(0, imgArray.length - cardsPerView);
+  const goto = useCallback((i) => setIndex((_) => clamp(i, 0, maxIndex)), [maxIndex]);
+  const next = useCallback(() => goto(index + 1), [goto, index]);
+  const prev = useCallback(() => goto(index - 1), [goto, index]);
 
-  const goto = (i) => setIndex(Math.max(0, Math.min(i, maxIndex)));
   const isAtStart = index <= 0;
   const isAtEnd = index >= maxIndex;
-  const next = () => goto(index + 1);
-  const prev = () => goto(index - 1);
 
-  const endPeek = 24;
-  const visibleRowWidth = cardsPerView * cardW + Math.max(0, cardsPerView - 1) * gap;
-  const slack = Math.max(0, containerW - visibleRowWidth);
+  // visual layout math
+  const endPeek = 24; // visual padding at the end when fully scrolled
+  const visibleRowWidth = cardsPerView * cardWidth + Math.max(0, cardsPerView - 1) * gapWidth;
+  const slack = Math.max(0, containerWidth - visibleRowWidth);
   const extraEndOffset = imgArray.length > cardsPerView && isAtEnd ? slack + endPeek : 0;
-  const translate = -(index * (cardW + gap)) + extraEndOffset;
+  const translate = -(index * (cardWidth + gapWidth)) + extraEndOffset;
+
+  // dots count equals possible starting positions (at least 1)
   const dots = Math.max(1, imgArray.length - cardsPerView + 1);
 
 
