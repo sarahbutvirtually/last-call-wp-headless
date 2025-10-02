@@ -215,8 +215,12 @@
 }
 
 /* Mobile */
-@include mobile { .howItWorks { padding: 4rem 1rem; } }
+@include mobile { 
+  .howItWorks { 
+    padding: 4rem 2rem !important; 
 
-/* Small phones */
-@include small { .howItWorks { padding: 3rem 0.75rem; } }
-
+    &__sectionTitles--top > h5, &__sectionTitles--bottom > h5 {
+      font-size: 1rem !important;
+    }
+  }
+}

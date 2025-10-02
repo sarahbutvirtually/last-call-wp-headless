@@ -32,10 +32,6 @@
     text-align: center;
   }
 
-  @include tablet { .faq { &__heading { font-size: 2rem; } } }
-  @include mobile { .faq { &__heading { font-size: 1.75rem; } } }
-  @include small  { .faq { &__heading { font-size: 1.5rem; } } }
-
   &__accordionList {
     display: flex;
     flex-direction: column;
@@ -102,7 +98,9 @@
 
   &__text {
     color: #300a09;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
+    font-size: 1rem;
+    font-weight: 500;
   }
 }
 
@@ -110,7 +108,5 @@
 @include tablet { .faq { &__section-title { gap: 1rem; } } }
 
 /* Mobile */
-@include mobile { .faq { padding: 4rem 1rem; gap: 3rem; &__section-title { flex-direction: column; } } }
+@include mobile { .faq { padding: 4rem 2rem; gap: 3rem; &__section-title { flex-direction: column; } } }
 
-/* Small phones */
-@include small { .faq { padding: 3rem 0.75rem; } }

@@ -7,18 +7,18 @@
 
 .pricing {
   background: #c9b23c;
-  padding: 7rem 4rem;
+  padding: 7rem var(--page-padding-global, 4rem);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 4rem;
 
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 4rem;
     width: 100%;
     max-width: 1200px;
   }
@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
   }
 
   &__heading {
@@ -48,7 +47,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: center;
+    align-items: stretch; /* allow children to naturally fill card width */
     justify-content: space-between;
     width: 33.3333%;
 
@@ -91,6 +90,7 @@
       flex-direction: column;
       gap: 1.2rem;
       height: 100%;
+      width: 100%;
     }
   }
 
@@ -106,16 +106,19 @@
     flex-direction: column;
     gap: 1rem;
     height: 100%;
+    width: 100%;
 
     &--item {
       display: flex;
       gap: 1rem;
       align-items: center;
+      width: 100%;
     }
 
     &--text {
       color: #300a09;
       white-space: wrap;
+      flex: 1 1 auto; /* text fills remaining space, ensuring consistent line wrap area */
     }
   }
 
@@ -169,20 +172,18 @@
 /* Tablet */
 @include tablet {
   .pricing {
-  &__heading { font-size: 2.25rem; }
     &__card { width: 100%; }
-    &__cardContainer { gap: 1.5rem; }
+    &__cardContainer { gap: 3rem; }
   }
 }
 
 /* Mobile */
 @include mobile {
   .pricing {
-    padding: 4rem 1rem;
-  &__heading { font-size: 2rem; }
+    padding: 4rem 2rem;
     &__container { gap: 1.5rem; }
     &__tabs { flex-wrap: wrap; gap: 0.5rem; }
-    &__cardContainer { flex-direction: column; align-items: stretch; gap: 1rem; }
+    &__cardContainer { flex-direction: column; align-items: stretch;}
     &__card { width: 100%; padding: 1.25rem; gap: 1.25rem; }
     &__mostPopularFlag { right: -10px; top: -10px; transform: scale(0.85); }
     &__actions--button { width: 100%; }
@@ -192,8 +193,6 @@
 /* Small phones */
 @include small {
   .pricing {
-    padding: 3rem 0.75rem;
-  &__heading { font-size: 1.75rem; }
     &__monthly { margin-left: 0; }
     &__card { padding: 1rem; }
   }

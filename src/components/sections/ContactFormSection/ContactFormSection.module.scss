@@ -36,6 +36,7 @@
 
   &__text {
     color: #300a09;
+    font-size: 1rem;
     letter-spacing: 0.02em;
   }
 
@@ -96,6 +97,7 @@
     width: fit-content;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    font-size: 1rem;
 
     &:hover {
       background: #4b1d19;
@@ -133,13 +135,8 @@
 /* Mobile */
 @include mobile {
   .contactForm {
-    padding: 4rem 1rem; gap: 2rem;
+    padding: 4rem 2rem; gap: 2rem;
     &__container { flex-direction: column; gap: 2rem; &--form { width: 100%; } }
     &__imageContainer { width: 100%; }
   }
-}
-
-/* Small phones */
-@include small {
-  .contactForm { padding: 3rem 0.75rem; }
 }

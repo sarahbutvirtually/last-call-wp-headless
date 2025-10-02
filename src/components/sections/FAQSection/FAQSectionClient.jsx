@@ -27,7 +27,7 @@ export default function FAQSectionClient({ faqs }) {
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   style={{ backgroundColor: item.backgroundColor ? item.backgroundColor : "#fff" }}
                 >
-                  <h6 style={{ color: item?.textColor || "#000" }} className={styles["faq__question"]}>{item.question}</h6>
+                  <h4 style={{ color: item?.textColor || "#000" }} className={styles["faq__question"]}>{item.question}</h4>
                   <svg
                     width="14"
                     height="14"

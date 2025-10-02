@@ -20,7 +20,7 @@ export default function FooterSection() {
       <div className={styles["footer__credits"]}>
         <div className={styles["footer__divider"]}></div>
         <div className={styles["footer__row"]}>
-          <p className={styles["footer__copyright"]}>All rights reserved.</p>
+          <p className={styles["footer__copyright"]}>All Rights Reserved.</p>
           <div className={styles["footer__footerLinks"]}>
             <p className={styles["footer__footerLinks--link"]}>Privacy Policy</p>
             <p className={styles["footer__footerLinks--link"]}>Terms of Service</p>

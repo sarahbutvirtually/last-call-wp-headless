@@ -46,7 +46,6 @@
 
     &--item {
       color: #300a09;
-      font-size: 1rem;
     }
   }
 
@@ -70,7 +69,7 @@
 
   &__copyright {
     color: #300a09;
-    font-size: 0.6rem;
+    font-size: 1rem;
   }
 
   &__footerLinks {
@@ -79,7 +78,7 @@
 
     &--link {
       color: #300a09;
-      font-size: 0.6rem;
+      font-size: 1rem;
       text-decoration: underline;
       text-underline-offset: 0.125rem;
     }
@@ -90,7 +89,4 @@
 @include tablet { .footer { &__nav { gap: 1.25rem; } } }
 
 /* Mobile */
-@include mobile { .footer { padding: 3rem 1rem; &__nav { gap: 1rem; } &__row { flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; } } }
-
-/* Small phones */
-@include small { .footer { padding: 2.5rem 0.75rem; } }
+@include mobile { .footer { padding: 3rem 2rem; &__nav { gap: 1rem; } &__row { flex-direction: column; gap: 0.5rem; align-items: center; text-align: center; } } }

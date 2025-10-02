@@ -37,8 +37,8 @@ export default function HowItWorksSectionClient({ section = [] }) {
     <section className={styles["howItWorks"]} id="howItWorks">
       <div className={styles["howItWorks__container"]}>
         <div className={styles["howItWorks__sectionTitles--top"]}>
-          <h6 className={styles["howItWorks__headingLeft"]}>How it works</h6>
-          <h6 className={styles["howItWorks__headingRight"]}>How it works</h6>
+          <h5 className={styles["howItWorks__headingLeft"]}>How it works</h5>
+          <h5 className={styles["howItWorks__headingRight"]}>How it works</h5>
         </div>
         <div className={styles["howItWorks__content"]}>
           {section.map((item, index) => {
@@ -63,15 +63,15 @@ export default function HowItWorksSectionClient({ section = [] }) {
                   }}
                   aria-expanded={isActive}
                 >
-                  <h5 className={styles["howItWorks__content--number"]}>0{id}</h5>
-                  <h5 className={styles["howItWorks__content--header"]}>{item?.stepTitle}</h5>
+                  <h3 className={styles["howItWorks__content--number"]}>0{id}</h3>
+                  <h3 className={styles["howItWorks__content--header"]}>{item?.stepTitle}</h3>
                 </button>
                 <div
                   className={`${styles["howItWorks__content--copy"]} ${
                     isActive ? styles["howItWorks__active--copy"] : styles["howItWorks__inactive--copy"]
                   }`}
                 >
-                  <h3 className={styles["howItWorks__content--sectionHeading"]}>{item?.stepTitle}</h3>
+                  <h2 className={styles["howItWorks__content--sectionHeading"]}>{item?.stepTitle}</h2>
                   <p className={styles["howItWorks__content--sectionBody"]}>{item?.stepDescription}</p>
                 </div>
               </div>
@@ -79,8 +79,8 @@ export default function HowItWorksSectionClient({ section = [] }) {
           })}
         </div>
         <div className={styles["howItWorks__sectionTitles--top"]}>
-          <h6 className={styles["howItWorks__headingLeft"]}>How it works</h6>
-          <h6 className={styles["howItWorks__headingRight"]}>How it works</h6>
+          <h5 className={styles["howItWorks__headingLeft"]}>How it works</h5>
+          <h5 className={styles["howItWorks__headingRight"]}>How it works</h5>
         </div>
       </div>
     </section>

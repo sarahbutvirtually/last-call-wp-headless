@@ -11,7 +11,7 @@ export default function PricingSectionClient({ pricingCards }) {
     <section className={styles["pricing"]} id="pricing">
       <div className={styles["pricing__container"]}>
         <div className={styles["pricing__headerContainer"]}>
-          <h2 className={styles["pricing__heading"]}>Packages</h2>
+          <h1 className={styles["pricing__heading"]}>Packages</h1>
         </div>
         <div className={styles["pricing__cardContainer"]}>
           {(pricingCards || []).map((card, index) => {
@@ -34,10 +34,10 @@ export default function PricingSectionClient({ pricingCards }) {
 
                 <div className={styles["pricing__card--top"]}>
                   <div className={styles["pricing__card--headerContainer"]}>
-                    <h6 className={styles["pricing__card--heading"]}>{fields?.subhead}</h6>
+                    <h5 className={styles["pricing__card--heading"]}>{fields?.subhead}</h5>
                     <div className={styles["pricing__card--priceContainer"]}>
-                      <h3 className={styles["pricing__card--price"]}>${fields?.pricePerHour}</h3>
-                      <h5 className={styles["pricing__card--perHour"]}>/hr</h5>
+                      <h1 className={styles["pricing__card--price"]}>${fields?.pricePerHour}</h1>
+                      <h4 className={styles["pricing__card--perHour"]}>/hr</h4>
                     </div>
                   </div>
                   <div className={styles["pricing__list"]}>
